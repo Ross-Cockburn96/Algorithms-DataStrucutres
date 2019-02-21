@@ -1,22 +1,74 @@
 #include <stdio.h>
-#define MAX 5; 
-
-void init_stack(struct stack *);
-void push (struct stack *, int item);
-void pop (struct stack *);
-
+#define MAX 10
 struct stack{
 	int array[MAX];
 	int top;
+};
+
+void init_stack(struct stack *);
+void push (struct stack *, int item);
+void *pop (struct stack *);
+
+int main(void){
+	printf("creating struc\n");
+	struct stack s;
+	printf("initialising stack\n");
+	init_stack;
+	
+	printf("pushing to stack \n");
+	push(&s, 11);
+    push(&s, 23);
+    push(&s, -8);
+    push(&s, 16);
+    push(&s, 27);
+    push(&s, 14);
+    push(&s, 20);
+    push(&s, 39);
+    push(&s, 2);
+    push(&s, 15);
+	printf("pushed to stack\n");
+    int *i = NULL;
+
+    i =  pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+    i = pop(&s);
+    if(i) { printf("Item popped: %d\n", *i); }
+
+	return 0;
 }
 
 void init_stack(struct stack *s){
 	s->top =-1;
 }
 
-int main(void){
-	struct stack s;
-	init_stack
 
 void push(struct stack *s, int item){
 	if (s-> top == MAX-1){
@@ -25,11 +77,12 @@ void push(struct stack *s, int item){
 	}
 	s->top++;
 	s->array[s->top] = item;
-	
-void *pop (struct stack *s){
+}
+void *pop (struct stack *s){ 
+	int *data;
 	if (s->top == -1){
 		printf("Stack is empty\n");
-		return null;
+		return NULL;
 	}
 	data = &s->array[s->top];
 	s->top--;
@@ -37,17 +90,9 @@ void *pop (struct stack *s){
 }
 	
 	
-void enqueue (int *arr, int item, int *pfront, int *prear){
-	if(*prear == MAX -1){
-		printf("Queue is full\n");
-		return; 
-	}
-	else{
-		printf("Enqueuing: %d\n", item);
-		(*prear)++;
-		arr[*prear] = item;
-		
-		if(*pfront == -1)
-			*pfront =0;
-	}
-}
+
+
+
+	
+	
+	
