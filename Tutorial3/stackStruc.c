@@ -10,12 +10,9 @@ void push (struct stack *, int item);
 void *pop (struct stack *);
 
 int main(void){
-	printf("creating struc\n");
 	struct stack s;
-	printf("initialising stack\n");
-	init_stack;
-	
-	printf("pushing to stack \n");
+	init_stack(&s);
+
 	push(&s, 11);
     push(&s, 23);
     push(&s, -8);
@@ -26,7 +23,7 @@ int main(void){
     push(&s, 39);
     push(&s, 2);
     push(&s, 15);
-	printf("pushed to stack\n");
+	push(&s, 7);
     int *i = NULL;
 
     i =  pop(&s);
