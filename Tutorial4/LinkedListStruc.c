@@ -5,6 +5,7 @@ void display(struct node *);
 void append (struct node **, int );
 void prepend (struct node **, int);
 void insert_after (struct node *, int, int);
+void insert_before (struct node *, int, int);
 void delete (struct node **, int);
 
 struct node{
@@ -40,6 +41,14 @@ int main(void){
 	insert_after(list, 5, 99);
 	printf("No of elements in linked list = %d\n", count(list));
 	display(list);
+	
+	insert_before(list, 3, 12);
+	printf("No of elements in linked list = %d\n", count(list));
+	display(list);
+	
+	printf("No of elements in linked list = %d\n", count(list));
+	display(list);
+	
 	
 	insert_after(list, 99, 10);
 	printf("No of elements in linked list = %d\n", count(list));
@@ -121,8 +130,34 @@ void insert_after(struct node *list, int location, int num){
 	r -> link = temp -> link;
 	temp -> link = r;
 }
+
+void insert_before(struct node *list, int location, int num){
+	struct node *temp, *prevTemp, *r;
+	int i; 
+	temp = list;
+	if (location == 0){
+		prepend(&list, num);
+	}else{
+		for (i=0; i < location-2; i++){
+		temp = temp -> link -> link ;
+		prevTemp = temp -> link;
+			if (temp  == NULL){
+				printf("Length of list is %d but supplied location is %d\n", i, location);
+				return;
+			}
+		}
+	}
 		
-void delete(struct node ** list, int num){
+	
+	r = (struct node *) malloc (sizeof(struct node));
+	r -> data = num;
+	r -> link = prevTemp; 
+	temp -> link =r;
+}
+	
+	
+
+void delete(struct node **list, int num){
 	struct node *old, *temp;
 	temp = *list;
 	
