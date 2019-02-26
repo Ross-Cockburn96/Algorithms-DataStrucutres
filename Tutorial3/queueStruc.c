@@ -25,7 +25,7 @@ int main(void){
 	enqueue(arr, 32, &front, &rear);
 	
 	int i;
-	for (int idx =0; idx < MAX;+1 idx++){
+	for (int idx =0; idx < MAX+1; idx++){
 		if(!empty(&front)){
 			i = dequeue(arr, &front, &rear);
 			printf("Received Dequeued item: %d\n", i);
@@ -34,6 +34,7 @@ int main(void){
 	
 	return 0;
 }
+
 
 void enqueue(int *arr, int item, int *pfront, int *prear){
 	if(*prear == MAX-1){
