@@ -18,6 +18,7 @@ int main(void){
 	struct node *list ;
 	list = NULL;
 	
+	printf("Append \n\n");
 	printf("No of elements in linked list = %d\n", count(list));
 	
 	append(&list, 14);
@@ -26,34 +27,39 @@ int main(void){
 	append(&list, 42);
 	append(&list, 17);
 	
+	
 	printf("No of elements in linked list = %d\n", count(list));
 	display (list);
 	
+	printf("Prepend \n\n");
 	prepend (&list, 999);
 	prepend (&list, 888);
 	prepend (&list, 777);
 	
+	
 	printf("No of elements in linked list = %d\n", count(list));
 	display (list);
 	
+	printf("Insert After \n\n");
 	insert_after(list, 1, 0);
 	insert_after(list, 2, 1);
 	insert_after(list, 5, 99);
 	printf("No of elements in linked list = %d\n", count(list));
 	display(list);
 	
+	printf("Insert Before \n\n");
 	insert_before(list, 3, 12);
+	insert_before(list, 6, 102);
 	printf("No of elements in linked list = %d\n", count(list));
 	display(list);
 	
-	printf("No of elements in linked list = %d\n", count(list));
-	display(list);
-	
-	
+	printf ("\n Insert After \n\n");
 	insert_after(list, 99, 10);
 	printf("No of elements in linked list = %d\n", count(list));
 	display(list);
 	
+	
+	printf("Deleted \n\n");
 	delete (&list, 99);
 	delete (&list, 1);
 	printf ("No of elements in linked list = %d\n", count(list));
@@ -138,9 +144,8 @@ void insert_before(struct node *list, int location, int num){
 	if (location == 0){
 		prepend(&list, num);
 	}else{
-		for (i=0; i < location-2; i++){
-		temp = temp -> link -> link ;
-		prevTemp = temp -> link;
+		for (i=0; i < (location - 1); i++){
+			temp = temp -> link;
 			if (temp  == NULL){
 				printf("Length of list is %d but supplied location is %d\n", i, location);
 				return;
@@ -151,7 +156,7 @@ void insert_before(struct node *list, int location, int num){
 	
 	r = (struct node *) malloc (sizeof(struct node));
 	r -> data = num;
-	r -> link = prevTemp; 
+	r -> link = temp -> link; 
 	temp -> link =r;
 }
 	
