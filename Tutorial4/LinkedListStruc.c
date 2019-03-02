@@ -1,4 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+
+struct node{
+	int data;
+	struct node * link;
+};
 
 int count(struct node *);
 void display(struct node *);
@@ -8,10 +15,7 @@ void insert_after (struct node *, int, int);
 void insert_before (struct node *, int, int);
 void delete (struct node **, int);
 
-struct node{
-	int data;
-	struct node * link;
-};
+
 
 int main(void){
 	
