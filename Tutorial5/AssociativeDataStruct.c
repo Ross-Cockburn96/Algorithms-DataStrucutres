@@ -6,6 +6,7 @@ struct DataItem* delete(struct DataItem*);
 void display();
 int hashCode(int );
 void insert(int, int);
+struct DataItem* search(int);
 
 #define SIZE 10
 
@@ -15,8 +16,52 @@ struct DataItem{
 };
 
 struct DataItem *hashArray[SIZE];
-struct DataItem *tempItem;
 struct DataItem *item; 
+
+int main(void){
+
+    display();
+
+    insert(1, 20);
+    insert(2, 70);
+    insert(42, 80);
+    insert(4, 25);
+    insert(12, 44);
+    insert(14, 32);
+    insert(17, 11);
+    insert(37, 97);
+    insert(10, 0);
+    
+    display();
+
+    item = search (37);
+    if(item != NULL){
+        printf("Element found: %d\n", item -> data);
+    }
+    else{
+        printf ("Element not found\n");
+    }
+
+    item = delete(item);
+    if(item != NULL){
+        printf("Element found: %d\n", item -> data);
+    }else{
+        printf("Element not found");
+    }
+    display();
+
+    item = search(37);
+    if(item != NULL){
+        printf("Element found: %d\n", item -> data);
+    }
+    else{
+        printf("Element not found\n");
+    }
+    display();
+
+    return (0);
+}
+
 
 void display(void){
     int i; 
@@ -40,5 +85,37 @@ void insert(int key, int data){
     item -> key = key;
 
     int hashIndex = hashCode(key);
-    while
+    while(hashArray[hashIndex] != NULL && hashArray[hashIndex] -> key != -1 ){
+        ++hashIndex;
+        hashIndex %= SIZE; 
+    }
+    hashArray[hashIndex] = item;
+}
+
+struct DataItem* search(int key){
+    int hashIndex = hashCode(key);
+    while(hashArray[hashIndex] != NULL){
+        if (hashArray[hashIndex] -> key == key){
+            return hashArray[hashIndex];
+        }else{
+            ++hashIndex;
+            hashIndex %= SIZE;
+        }
+    }
+    return NULL;
+}
+
+struct DataItem* delete(struct DataItem* item){
+    int key = item -> key;
+    int hashIndex = hashCode(key);
+    while (hashArray[hashIndex != NULL]){
+        if (hashArray[hashIndex] -> key == key){
+            struct DataItem *temp = hashArray[hashIndex];
+            hashArray[hashIndex] = NULL;
+            return temp;
+        }
+        ++hashIndex;
+        hashIndex %= SIZE;
+    }
+    return NULL;
 }
