@@ -134,10 +134,8 @@ void insert_after(struct node *list, int location, int num){
 
 void delete (struct node **list, int num){
 	struct node *temp = *list;
-	printf("temp is %d\n", temp);
 	while (temp != NULL){
 		if (temp -> data == num){
-			printf("temp is %d, *list is %d\n", temp, *list);
 			if(temp == *list){ //this will happen if we are deleting the first node in the list
 				*list = (*list) -> next;  
 				(*list) -> prev = NULL;
