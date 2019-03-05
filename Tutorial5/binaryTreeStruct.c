@@ -97,7 +97,7 @@ void delete (struct binary_tree_node **root, int num){
         return; 
     }
 
-    if(search_node -> left_child != NULL && search_node -> right_child != NULL ){ // this function doesn't do a return and that's important
+    if(search_node -> left_child != NULL && search_node -> right_child != NULL ){ 
         parent = search_node;
         next = search_node -> right_child;
         while (next -> left_child != NULL){
